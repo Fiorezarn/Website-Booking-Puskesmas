@@ -62,9 +62,16 @@
                 <td>{{ $item->alamat }}</td>
                 <td>{{ $item->kategori }}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="/">
-                      Delete
-                    </button>
+                <div class="btn-group">
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Pilih Status
+                      </button>
+                     <div class="dropdown-menu">
+                     <a class="dropdown-item" href="#">Status 1</a>
+                    <a class="dropdown-item" href="#">Status 2</a>
+                    <a class="dropdown-item" href="#">Status 3</a>
+                   </div>
+                  </div>
                 </td>
             </tr>                
             @endforeach
