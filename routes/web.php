@@ -25,11 +25,10 @@ Route::get('/ambilantrean', function () {
     return view('ambilantrean');
 });
 
-
-
-
-
 /////////////////////////////////////Admin/////////////////////////////////////////////////
+// Route::group(['middleware' => ['Auth', 'Admin']], function () {
+//     Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+// });
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
@@ -43,10 +42,8 @@ Route::get('/politht', function () {
     return view('admin.politht');
 });
 ///////////////////////////////////////// /////////////////////////////////////////////////
-
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
