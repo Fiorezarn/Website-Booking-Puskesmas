@@ -30,26 +30,10 @@ Route::get('/ambilantrean', function () {
 
 Auth::routes();
 /////////////////////////////////////Admin/////////////////////////////////////////////////
-// Route::group(['middleware' => ['Auth', 'Admin']], function () {
-// });
 Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
-
 Route::get('/poliumum', [AdminController::class, 'poliumum']);
 Route::get('/poligigi', [AdminController::class, 'poligigi']);
 Route::get('/politht', [AdminController::class, 'politht']);
-
-// Route::get('/poliumum', function () {
-//     return view('admin.poliumum');
-// });
-// Route::get('/poligigi', function () {
-//     return view('admin.poligigi');
-// });
-// Route::get('/politht', function () {
-//     return view('admin.politht');
-// });
 ///////////////////////////////////////// /////////////////////////////////////////////////
 
 Route::post('/insert',[AntreanController::class,'insert']);
