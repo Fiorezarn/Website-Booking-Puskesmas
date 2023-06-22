@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('usia');
             $table->string('jeniskelamin');
             $table->string('kategori');
-            $table->bigInteger('nik'); // Mengubah menjadi Big Integer
-            $table->bigInteger('nohp'); // Mengubah menjadi Big Integer
+            $table->bigInteger('nik'); 
+            $table->bigInteger('nohp'); 
             $table->string('alamat');
             $table->timestamps();
         });
