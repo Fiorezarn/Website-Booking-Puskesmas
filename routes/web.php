@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,12 @@ Route::get('/ambilantrean', function () {
 });
 
 /////////////////////////////////////Admin/////////////////////////////////////////////////
-// Route::group(['middleware' => ['Auth', 'Admin']], function () {
-//     Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
-// });
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::group(['middleware' => ['Auth', 'Admin']], function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
 });
+// Route::get('/admin', function () {
+//     return view('admin.dashboard');
+// });
 Route::get('/poliumum', function () {
     return view('admin.poliumum');
 });

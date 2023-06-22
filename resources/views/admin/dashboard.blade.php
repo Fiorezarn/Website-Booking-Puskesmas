@@ -63,7 +63,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>14</h3>
+                                <h3>{{ $totalUser }}</h3>
                                 <p>User Registrations</p>
                             </div>
                             <div class="icon">
