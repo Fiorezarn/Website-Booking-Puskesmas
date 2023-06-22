@@ -24,7 +24,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <P>Jumlah Pasien : 15</P>
+              <P>Jumlah Pasien : {{$totalpasien}}</P>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -44,11 +44,31 @@
                 <td>NIK</td>
                 <td>Usia</td>
                 <td>Kelamin</td>
+                <td>No Telefon</td>
                 <td>Alamat</td>
                 <td>Poli</td>
                 <td style="width: 200px;">Action</td> <!-- Menambahkan style width pada column "Action" -->
             </tr>
         </thead>
+        <tbody>
+            @foreach ($pasien as $item)
+            <tr>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->namapasien }}</td>
+                <td>{{ $item->nik }}</td>
+                <td>{{ $item->usia }}</td>
+                <td>{{ $item->jeniskelamin }}</td>
+                <td>{{ $item->nohp }}</td>
+                <td>{{ $item->alamat }}</td>
+                <td>{{ $item->kategori }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="/">
+                      Delete
+                    </button>
+                </td>
+            </tr>                
+            @endforeach
+        </tbody>
       </table>
     </div>  
 
