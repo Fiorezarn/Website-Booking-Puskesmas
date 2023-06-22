@@ -9,21 +9,29 @@
     <section id="ambil-antrean">
       <div class="container">
         <h2>Form Ambil Antrean</h2>
-        <form action="/submit-antrean" method="POST">
+        <form action="/insert" method="POST">
           @csrf
           <div class="form-group">
-            <label for="nama">Nama Pasien:</label>
-            <input type="text" id="nama" name="nama" required>
+            <label for="namapasien">Nama Pasien:</label>
+            <input type="text" id="namapasien" name="namapasien" required>
           </div>
           <div class="form-group">
             <label for="usia">Usia:</label>
             <input type="number" id="usia" name="usia" required>
           </div>
           <div class="form-group">
-            <label for="jenis_kelamin">Jenis Kelamin:</label>
-            <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <label for="jeniskelamin">Jenis Kelamin:</label>
+            <select id="jeniskelamin" name="jeniskelamin" required>
               <option value="laki-laki">Laki-laki</option>
               <option value="perempuan">Perempuan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="kategori">Poli:</label>
+            <select id="kategori" name="kategori" required>
+              <option value="Poli Gigi">Poli Gigi</option>
+              <option value="Poli Umum">Poli Umum</option>
+              <option value="Poli THT">Poli THT</option>
             </select>
           </div>
           <div class="form-group">

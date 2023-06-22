@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AntreanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,10 @@ Route::get('/antrean', function () {
 
 Route::get('/ambilantrean', function () {
     return view('ambilantrean');
-});
+})->name('ambilantrean');
 
+
+Auth::routes();
 /////////////////////////////////////Admin/////////////////////////////////////////////////
 Route::group(['middleware' => ['Auth', 'Admin']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
@@ -43,7 +46,10 @@ Route::get('/politht', function () {
     return view('admin.politht');
 });
 ///////////////////////////////////////// /////////////////////////////////////////////////
-Auth::routes();
+
+Route::post('/insert',[AntreanController::class,'insert']);
+
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
