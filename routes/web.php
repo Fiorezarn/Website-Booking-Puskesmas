@@ -35,8 +35,9 @@ Route::get('/poliumum', [AdminController::class, 'poliumum']);
 Route::get('/poligigi', [AdminController::class, 'poligigi']);
 Route::get('/politht', [AdminController::class, 'politht']);
 ///////////////////////////////////////// /////////////////////////////////////////////////
-
 Route::post('/insert',[AntreanController::class,'insert']);
+Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+
 
 
 

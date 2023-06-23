@@ -16,5 +16,9 @@ class Antrean extends Model
     {
         return DB::table('antreans')->insert($data);
     }
+    public function editData($id, $data)
+    {
+        return DB::table('antreans')->where('id', $id)->update($data);
+    }
 }
 

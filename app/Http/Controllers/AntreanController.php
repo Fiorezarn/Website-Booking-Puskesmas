@@ -25,6 +25,7 @@ class AntreanController extends Controller
             'nik' => 'required|integer',
             'nohp' => 'required|integer',
             'alamat' => 'required',
+            'status' => 'nullable',
         ], [
             'id.unique' => 'ID Sudah Ada !!',
             'id.min' => 'Min 1 Karakter',
@@ -33,5 +34,28 @@ class AntreanController extends Controller
 
         $this->antrean->addData($data);
         return redirect()->route('ambilantrean')->with('pesan','Data Berhasil Di Tambahkan !!');
+    }
+    // public function update($id)
+    // {
+    //     Request()->validate([
+    //         'status' => 'required',
+    //     ],[
+    //         'status.required' => 'Status wajib diisi !!',
+    //     ]);
+        
+    //     $data = [
+    //         'status' => Request('status')
+    //     ];
+    //     $this->antrean->editData($id, $data);
+    //     return redirect()->route('dashboard')->with('pesan','Data Berhasil Di Update !!');
+    // }
+
+    public function update(Request $request, Antrean $antrean)
+    {
+        $validated = $request->validate([
+            "status" => "required|in:Diterima,Mengantri,Selesai,Cancelled",
+        ]);
+        $antrean->update($validated);
+        return back()->with("success", "Status berhasil di perbaharui");
     }
 }
