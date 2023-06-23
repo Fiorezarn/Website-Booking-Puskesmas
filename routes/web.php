@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AntreanController;
+use App\Http\Middleware\Admin;
+use App\Http\Middleware\RedirectIfNotAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/antrean', function () {
     return view('antrean');
-});
+})->name('antrean');
 
 Route::get('/ambilantrean', function () {
     return view('ambilantrean');
@@ -32,7 +34,15 @@ Auth::routes();
 /////////////////////////////////////Admin/////////////////////////////////////////////////
 // Route::group(['middleware' => ['Auth', 'Admin']], function () {
 // });
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/poliumum', [AdminController::class, 'poliumum']);
+    Route::get('/poligigi', [AdminController::class, 'poligigi']);
+    Route::get('/politht', [AdminController::class, 'politht']);
+});
+
+
 // Route::get('/admin', function () {
 //     return view('admin.dashboard');
 // });
