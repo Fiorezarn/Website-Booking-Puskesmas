@@ -33,7 +33,7 @@ class AntreanController extends Controller
         ]);
 
         $this->antrean->addData($data);
-        return redirect()->route('ambilantrean')->with('pesan','Data Berhasil Di Tambahkan !!');
+        return redirect()->route('antrean')->with('pesan','Data Berhasil Di Tambahkan !!');
     }
     // public function update($id)
     // {
