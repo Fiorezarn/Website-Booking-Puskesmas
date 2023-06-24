@@ -48,7 +48,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 //     return view('admin.dashboard');
 // });
 
-=======
 // // Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
 // // >>>>>>> main
 // Route::get('/poliumum', [AdminController::class, 'poliumum']);
@@ -56,7 +55,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 // Route::get('/politht', [AdminController::class, 'politht']);
 ///////////////////////////////////////// /////////////////////////////////////////////////
 Route::post('/insert',[AntreanController::class,'insert']);
-Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+// Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+Route::patch('update/{id}', 'AntreanController@update')->name('update');
+// Route::resource('update/{id}', [AntreanController::class, 'update'])->name('update');
+
 
 
 
