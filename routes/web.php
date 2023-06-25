@@ -57,8 +57,10 @@ Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.
 ///////////////////////////////////////// /////////////////////////////////////////////////
 
 Route::post('/insert',[AntreanController::class,'insert']);
-// Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
-Route::patch('update/{id}', 'AntreanController@update')->name('update');
+Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+// Route::patch('/antrean/{antrean}', [AntreanController::class, 'update'])->name('antrean.update');
+// Route::patch('update/{id}', 'AntreanController@update')->name('update');
+// Route::resource('update', AntreanController::class)->only(["update"])->names('update');
 // Route::resource('update/{id}', [AntreanController::class, 'update'])->name('update');
 
 

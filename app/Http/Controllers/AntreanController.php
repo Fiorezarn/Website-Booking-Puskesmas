@@ -58,4 +58,15 @@ class AntreanController extends Controller
         $antrean->update($validated);
         return back()->with("success", "Status berhasil di perbaharui");
     }
+
+//     public function update(Request $request, Antrean $antrean)
+// {
+//     $validated = $request->validate([
+//         "status" => "required|in:Diterima,Mengantri,Selesai,Cancelled",
+//     ]);
+    
+//     $antrean->update($validated);
+//     return back()->with("success", "Status berhasil diperbarui");
+// }
+
 }
