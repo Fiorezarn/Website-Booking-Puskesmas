@@ -9,7 +9,7 @@
     <section id="ambil-antrean">
       <div class="container">
         <h2>Form Ambil Antrean</h2>
-        <form action="/insert" method="POST">
+        <form action="{{ route('ambilantrean.store') }}" method="POST">
           @csrf
           <div class="form-group">
             <label for="namapasien">Nama Pasien:</label>

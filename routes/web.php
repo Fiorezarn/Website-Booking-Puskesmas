@@ -5,6 +5,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AntreanController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\RedirectIfNotAdmin;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AntreanuserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +24,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/antrean', function () {
-    return view('antrean');
-})->name('antrean');
+// Route::get('/antrean', function () {
+//     return view('antrean');
+// })->name('antrean');
 
 Route::get('/ambilantrean', function () {
     return view('ambilantrean');
@@ -31,10 +34,6 @@ Route::get('/ambilantrean', function () {
 
 
 Auth::routes();
-/////////////////////////////////////Admin/////////////////////////////////////////////////
-// <<<<<<< beta
-// Route::group(['middleware' => ['Auth', 'Admin']], function () {
-// });
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
@@ -43,10 +42,12 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/politht', [AdminController::class, 'politht']);
 });
 
-
-// Route::get('/admin', function () {
-//     return view('admin.dashboard');
-// });
+Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuserall');
+Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuser');
+Route::get('/ambilantrean', [AntreanuserController::class, 'showForm'])->name('ambilantrean.form');
+Route::post('/ambilantrean', [AntreanuserController::class, 'store'])->name('ambilantrean.store');
+Route::get('/contact', [ContactController::class, 'contact'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
 
 // // Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
 // // >>>>>>> main
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 // Route::get('/poligigi', [AdminController::class, 'poligigi']);
 // Route::get('/politht', [AdminController::class, 'politht']);
 ///////////////////////////////////////// /////////////////////////////////////////////////
+
 Route::post('/insert',[AntreanController::class,'insert']);
 // Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
 Route::patch('update/{id}', 'AntreanController@update')->name('update');
@@ -61,8 +63,5 @@ Route::patch('update/{id}', 'AntreanController@update')->name('update');
 
 
 
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
