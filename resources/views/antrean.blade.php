@@ -16,19 +16,36 @@
             <i class="bi bi-file-plus me-1"></i>Ambil Antrian
           </a>
         @endauth
+
+
+  @if(auth()->check())
     <section id="queue">
       <div class="container">
-        <h2>Antrian Sekarang</h2>
-        <div class="queue-number">
-          <h3>Nomor Antrian:</h3>
-          <p>001</p>
+      @auth
+        <h2>Antrian Anda</h2>
+        @if($pasien-> count() > 0)
+        <div class="row mb-0 mb-lg-4">
+            @foreach ($pasien as $pasienall)
+              <div class="queue-number">
+                  <div class="appointment-number">
+                    <h3>Nomor Antrian:</h3>
+                    <p>{{ $pasienall->id }}</p>
+                  </div>
+                  <div class="appointment-status">
+                    <h3>Status:</h3>
+                    <p>{{ $pasienall->status }}</p>
+                  </div>
+              </div>
+            @endforeach
         </div>
-        <div class="queue-status">
-          <h3>Status:</h3>
-          <p>Menunggu</p>
-        </div>
+        @else
+          <p>Anda belum mengambil antrian.</p>
+        @endif
+      @endauth
       </div>
     </section>
+  @endif
+
     <section id="categories">
       <div class="container">
         <h2>Kategori</h2>
@@ -42,27 +59,19 @@
     <section id="appointment">
       <div class="container">
         <h2 id="appointment-category">Antrean Poli Umum</h2>
-        <div class="appointment-list">
-          <div class="appointment-item">
-            <div class="appointment-number">
-              <h3>Nomor Antrian:</h3>
-              <p>002</p>
-            </div>
-            <div class="appointment-status">
-              <h3>Status:</h3>
-              <p>Menunggu</p>
-            </div>
-          </div>
-          <div class="appointment-item">
-            <div class="appointment-number">
-              <h3>Nomor Antrian:</h3>
-              <p>003</p>
-            </div>
-            <div class="appointment-status">
-              <h3>Status:</h3>
-              <p>Menunggu</p>
-            </div>
-          </div>
+        <div class="row mb-0 mb-lg-4">
+            @foreach ($pasien as $pasien)
+              <div class="appointment-item">
+                <div class="appointment-number">
+                  <h3>Nomor Antrian:</h3>
+                  <p>{{ $pasien->id }}</p>
+                </div>
+                <div class="appointment-status">
+                  <h3>Status:</h3>
+                  <p>{{ $pasien->status }}</p>
+                </div>
+              </div>
+            @endforeach
         </div>
       </div>
     </section>

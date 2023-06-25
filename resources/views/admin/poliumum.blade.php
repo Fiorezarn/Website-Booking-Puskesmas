@@ -35,7 +35,7 @@
         </div>
       @endif
       
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="update/{{ $pasien->first()->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         <table class="table table-bordered">
           <thead>
@@ -62,7 +62,9 @@
               <td>{{ $pasien->nohp }}</td>
               <td>{{ $pasien->alamat }}</td>
               <td>{{ $pasien->kategori }}</td>
-              <td><button
+              <td>
+              {{-- <span class="badge text-bg-warning">panding</span> --}}
+                <button
                         class="btn
                         @if ($pasien->status == 'Diterima') btn-warning
                         @elseif ($pasien->status == 'Mengantri')

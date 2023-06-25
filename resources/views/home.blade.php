@@ -1,5 +1,7 @@
 @extends('layouts.main')
+@include('sweetalert::alert')
 @section('css', '/css/style.css')
+
 @section('content')
       <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex align-items-center">
@@ -15,15 +17,15 @@
       <!-- End Hero -->
     <main id="main">
         <!-- ======= Kenapa kita Section ======= -->
-            <section id="why-us" class="why-us">
+            <section id="info-web" class="info-web">
               <div class="container">
 
                 <div class="row">
                   <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="content-why-us">
+                    <div class="content-info-web">
                       <h3>Sistem Antrian Online</h3>
                       <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid iure, recusandae qui autem quam cupiditate impedit corporis nesciunt earum molestiae delectus voluptas, nostrum ut iste cumque doloribus nam alias cum. 
+                      Sistem antrian online di sebuah puskesmas memungkinkan pasien untuk mendaftar dan memilih jenis layanan yang diinginkan melalui platform digital. Mereka dapat memilih waktu kunjungan dan menerima konfirmasi antrian dengan nomor dan informasi terkait. Selain itu, sistem ini memberikan pemberitahuan dan peringatan kepada pasien sebelum kunjungan mereka, serta memungkinkan pengaturan prioritas bagi pasien darurat atau dengan kebutuhan khusus. Petugas puskesmas dapat memantau alur antrian secara real-time dan memperbarui status jika diperlukan. Dengan demikian, sistem antrian online meningkatkan efisiensi pelayanan, mengurangi waktu tunggu, dan memberikan pengalaman yang lebih baik bagi pasien.
                       </p>
                     </div>
                   </div>
@@ -35,7 +37,7 @@
                             <i class="bx bx-plus-medical"></i>
                             <h4>Poli Umum</h4>
                             <p>
-                              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati laudantium cum, nesciunt, doloremque voluptatem magni cumque in sed modi totam excepturi voluptatum earum quo alias magnam, praesentium facilis reiciendis assumenda?
+                            Poli umum adalah layanan medis yang menyediakan pemeriksaan dan perawatan umum bagi pasien dengan berbagai keluhan atau kondisi kesehatan non-spesifik. Dokter di poli umum dapat menangani penyakit umum seperti flu, batuk, demam, nyeri ringan, dan memberikan nasihat mengenai masalah kesehatan umum. Poli umum juga sering menjadi tempat pertama untuk pemeriksaan awal, diagnosis, atau rujukan ke spesialis jika diperlukan.  
                             </p>
                           </div>
                         </div>
@@ -44,7 +46,7 @@
                             <i class="bx bx-dna"></i>
                             <h4>Poli Gigi</h4>
                             <p>
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sint corporis veniam eum, aperiam harum nostrum adipisci beatae autem, nihil ex maxime cum nesciunt ducimus labore nam laborum, voluptas provident?
+                            Poli gigi atau klinik gigi adalah fasilitas kesehatan yang menyediakan perawatan kesehatan gigi dan mulut. Di poli gigi, dokter gigi dan tim medisnya menangani berbagai kondisi gigi dan mulut, termasuk pemeriksaan gigi rutin, pembersihan gigi, penambalan gigi, pencabutan gigi, perawatan akar gigi, pemasangan gigi palsu, dan pencegahan penyakit gigi. Poli gigi juga memberikan edukasi tentang perawatan gigi yang baik dan pentingnya menjaga kebersihan mulut.  
                             </p>
                           </div>
                         </div>
@@ -53,7 +55,7 @@
                             <i class="bx bxs-first-aid"></i>
                             <h4>Poli THT</h4>
                             <p>
-                              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis delectus quia odio repudiandae quam impedit, recusandae voluptatem sit velit magnam. Autem facere provident odit voluptatibus cumque dolorem ea, dolorum vero.
+                            Poli THT (Telinga, Hidung, dan Tenggorokan) adalah poli yang spesialisasinya berfokus pada penyakit, gangguan, dan keluhan yang terkait dengan telinga, hidung, dan tenggorokan. Dokter spesialis THT atau otolaringolog akan menangani masalah seperti infeksi telinga, penyumbatan hidung, gangguan pendengaran, tinnitus (denging telinga), polip hidung, amandel yang membesar, masalah pada pita suara, dan masalah terkait saluran pernapasan atas. Poli THT juga dapat melakukan prosedur seperti pemeriksaan endoskopi dan pembedahan kecil yang terkait dengan area tersebut.  
                             </p>
                           </div>
                         </div>
@@ -72,7 +74,7 @@
               <div class="container">
 
                 <div class="section-title">
-                  <h2>Contact</h2>
+                  <h1>Contact Us</h1>
                 </div>
               </div>
 
@@ -104,27 +106,40 @@
                   </div>
 
                   <div class="col-lg-8 mt-5 mt-lg-0">
-
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    @if(Session::has('message_sent'))
+                      <div class="alert alert-success" role="alert">
+                          {{ Session::get('message_sent') }}
+                      </div>
+                    @endif
+                    <form action="{{ route('contact.send') }}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                      @csrf
                       <div class="row">
                         <div class="col-md-6 form-group">
                           <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                          @error('name')
+                              <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
                           <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                          @error('email')
+                              <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                         </div>
                       </div>
                       <div class="form-group mt-3">
                         <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        @error('subject')
+                            <div class="alert alert-danger">{{ $subject }}</div>
+                        @enderror
                       </div>
                       <div class="form-group mt-3">
                         <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                        @error('message')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                       </div>
-                      <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                      </div>
+
                       <div class="text-center"><button type="submit">Send Message</button></div>
                     </form>
 
@@ -137,4 +152,10 @@
         <!-- End Contact Section -->
 
       </main>
+
+  @push('script')
+    <script src="{{ asset('/js/navbar.js') }}"></script>
+  @endpush
+
+  
 @endsection
