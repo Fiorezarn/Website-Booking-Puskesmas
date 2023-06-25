@@ -46,12 +46,21 @@ Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('
 Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuser');
 Route::get('/ambilantrean', [AntreanuserController::class, 'showForm'])->name('ambilantrean.form');
 Route::post('/ambilantrean', [AntreanuserController::class, 'store'])->name('ambilantrean.store');
-
-
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
+
+// // Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
+// // >>>>>>> main
+// Route::get('/poliumum', [AdminController::class, 'poliumum']);
+// Route::get('/poligigi', [AdminController::class, 'poligigi']);
+// Route::get('/politht', [AdminController::class, 'politht']);
+///////////////////////////////////////// /////////////////////////////////////////////////
+
 Route::post('/insert',[AntreanController::class,'insert']);
-Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+// Route::post('update/{id}', [AntreanController::class, 'update'])->name('update');
+Route::patch('update/{id}', 'AntreanController@update')->name('update');
+// Route::resource('update/{id}', [AntreanController::class, 'update'])->name('update');
+
 
 
 

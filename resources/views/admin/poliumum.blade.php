@@ -63,6 +63,7 @@
               <td>{{ $pasien->alamat }}</td>
               <td>{{ $pasien->kategori }}</td>
               <td>
+<<<<<<< HEAD
               {{-- <span class="badge text-bg-warning">panding</span> --}}
                 <button
                         class="btn
@@ -113,10 +114,53 @@
                       </ul>
                     </td>
                   </tr>
+=======
+                <div class="btn-group">
+                  <button type="button" class="btn
+                    @if ($pasien->status == 'Diterima') btn-warning
+                    @elseif ($pasien->status == 'Mengantri') btn-secondary
+                    @elseif ($pasien->status == 'Selesai') btn-success
+                    @elseif ($pasien->status == 'Cancelled') btn-danger
+                    @endif
+                    btn-sm dropdown-toggle py-0 px-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if ($pasien->status == 'Diterima')
+                    Diterima
+                    @elseif ($pasien->status == 'Mengantri')
+                    Mengantri
+                    @elseif ($pasien->status == 'Selesai')
+                    Selesai
+                    @elseif ($pasien->status == 'Cancelled')
+                    Cancelled
+                    @endif
+                  </button>
+                  <div class="dropdown-menu">
+                    <form action="update/{{ $pasien->first()->id }}" method="post">
+                      @method('patch')
+                      @csrf
+                      <input type="hidden" name="status" value="Mengantri">
+                      <button type="submit" class="dropdown-item">Mengantri</button>
+                    </form>
+                    <form action="update/{{ $pasien->first()->id }}" method="post">
+                      @method('patch')
+                      @csrf
+                      <input type="hidden" name="status" value="Selesai">
+                      <button type="submit" class="dropdown-item">Selesai</button>
+                    </form>
+                    <form action="update/{{ $pasien->first()->id }}" method="post">
+                      @method('patch')
+                      @csrf
+                      <input type="hidden" name="status" value="Cancelled">
+                      <button type="submit" class="dropdown-item">Cancelled</button>
+                    </form>
+                  </div>
+                </div>
+              </td>
+>>>>>>> 9c5f5ca9ad53c7a6e8b6010232fdc84b63376da9
             </tr>
-            @endforeach
+          @endforeach
           </tbody>
         </table>
+      </form>
     </div>  
   </div>
 
