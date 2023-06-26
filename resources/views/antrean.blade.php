@@ -23,24 +23,29 @@
       <div class="container">
       @auth
         <h2>Antrian Anda</h2>
-        @if($pasien-> count() > 0)
         <div class="row mb-0 mb-lg-4">
-            @foreach ($pasien as $pasienall)
-              <div class="queue-number">
-                  <div class="appointment-number">
-                    <h3>Nomor Antrian:</h3>
-                    <p>{{ $pasienall->id }}</p>
+            @if($pasien-> count() > 0)
+                @foreach ($pasien as $pasienall)
+                  <div class="appointment-item">
+                      <div class="appointment-number">
+                        <h3>Nama</h3>
+                        <p>{{ $pasienall->namapasien }}</p>
+                      </div>  
+                    <div class="appointment-number">
+                        <h3>Nomor Antrian:</h3>
+                        <p>{{ $pasienall->id }}</p>
+                      </div>
+                      <div class="appointment-status">
+                        <h3>Status:</h3>
+                        <p>{{ $pasienall->status }}</p>
+                      </div>
                   </div>
-                  <div class="appointment-status">
-                    <h3>Status:</h3>
-                    <p>{{ $pasienall->status }}</p>
-                  </div>
-              </div>
-            @endforeach
-        </div>
-        @else
-          <p>Anda belum mengambil antrian.</p>
-        @endif
+                @endforeach
+            </div>
+            @else
+              <p>Anda belum mengambil antrian.</p>
+            @endif
+          </div>
       @endauth
       </div>
     </section>
@@ -56,12 +61,17 @@
         </div>
       </div>
     </section>
+
     <section id="appointment">
       <div class="container">
         <h2 id="appointment-category">Antrean Sekarang</h2>
         <div class="row mb-0 mb-lg-4">
         @foreach ($antreanPoliUmum as $antrian)
             <div class="appointment-item" data-category="Poli Umum">
+             <div class="appointment-number">
+               <h3>Nama</h3>
+                <p>{{ $antrian->namapasien }}</p>
+             </div>
               <div class="appointment-number">
                 <h3>Nomor Antrian:</h3>
                 <p>{{ $antrian->id }}</p>
@@ -75,6 +85,10 @@
           @foreach ($antreanPoliGigi as $antrian)
             <div class="appointment-item" data-category="Poli Gigi">
               <div class="appointment-number">
+                <h3>Nama</h3>
+                  <p>{{ $antrian->namapasien }}</p>
+              </div>
+              <div class="appointment-number">
                 <h3>Nomor Antrian:</h3>
                 <p>{{ $antrian->id }}</p>
               </div>
@@ -86,6 +100,10 @@
           @endforeach
           @foreach ($antreanPoliTHT as $antrian)
             <div class="appointment-item" data-category="Poli THT">
+              <div class="appointment-number">
+                <h3>Nama</h3>
+                  <p>{{ $antrian->namapasien }}</p>
+              </div>
               <div class="appointment-number">
                 <h3>Nomor Antrian:</h3>
                 <p>{{ $antrian->id }}</p>

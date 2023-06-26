@@ -35,7 +35,8 @@
         </div>
       @endif
       
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('update', $pasien->first()->id) }}" method="POST" enctype="multipart/form-data">
+      @method('patch')
         @csrf
         <table class="table table-bordered">
           <thead>
@@ -81,25 +82,16 @@
                     Cancelled
                     @endif
                   </button>
+                  
                   <div class="dropdown-menu">
-                    <form action="update/{{ $pasien->first()->id }}" method="post">
-                      @method('patch')
-                      @csrf
-                      <input type="hidden" name="status" value="Mengantri">
-                      <button type="submit" class="dropdown-item">Mengantri</button>
-                    </form>
-                    <form action="update/{{ $pasien->first()->id }}" method="post">
-                      @method('patch')
-                      @csrf
-                      <input type="hidden" name="status" value="Selesai">
-                      <button type="submit" class="dropdown-item">Selesai</button>
-                    </form>
-                    <form action="update/{{ $pasien->first()->id }}" method="post">
-                      @method('patch')
-                      @csrf
-                      <input type="hidden" name="status" value="Cancelled">
-                      <button type="submit" class="dropdown-item">Cancelled</button>
-                    </form>
+                    <form action="{{ route('update', $pasien->first()->id) }}" method="POST" enctype="multipart/form-data">
+                        @method('patch')
+                        @csrf
+                        <button type="submit" name="status" value="Mengantri" class="dropdown-item"  {{ $pasien->status === 'Mengantri' ? 'selected' : '' }} >Mengantri</button>
+                        <button type="submit" name="status" value="Diterima" class="dropdown-item"  {{ $pasien->status === 'Diterima' ? 'selected' : '' }}>Diterima</button>
+                        <button type="submit" name="status" value="Selesai" class="dropdown-item"  {{ $pasien->status === 'Selesai' ? 'selected' : '' }}>Selesai</button>
+                        <button type="submit" name="status" value="Cancelled" class="dropdown-item"  {{ $pasien->status === 'Cancelled' ? 'selected' : '' }}>Cancelled</button>
+                      </form>
                   </div>
                 </div>
               </td>

@@ -14,6 +14,7 @@ class AntreanController extends Controller
         $this->antrean = $antrean;
     }
 
+
     public function insert(Request $request)
     {
         $data = $request->validate([
@@ -50,12 +51,33 @@ class AntreanController extends Controller
     //     return redirect()->route('dashboard')->with('pesan','Data Berhasil Di Update !!');
     // }
 
-    public function update(Request $request, Antrean $antrean)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             "status" => "required|in:Diterima,Mengantri,Selesai,Cancelled",
         ]);
-        $antrean->update($validated);
-        return back()->with("success", "Status berhasil di perbaharui");
+
+        $pasien = Antrean::find($request->id);
+        $pasien->status = $request->status;
+        $pasien->save();
+
+        return back()->with("pesan", "Status berhasil diperbarui");
+
     }
+    
+    public function showupdate()
+    {
+        return view('update');
+    }
+
+//     public function update(Request $request, Antrean $antrean)
+// {
+//     $validated = $request->validate([
+//         "status" => "required|in:Diterima,Mengantri,Selesai,Cancelled",
+//     ]);
+    
+//     $antrean->update($validated);
+//     return back()->with("success", "Status berhasil diperbarui");
+// }
+
 }

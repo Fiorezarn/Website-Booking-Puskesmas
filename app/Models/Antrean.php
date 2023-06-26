@@ -13,8 +13,7 @@ class Antrean extends Model
     use HasFactory;
 
     protected $table = 'antreans';
-
-
+    
     public function user()
     {
         return $this->belongsTo(User::class);
