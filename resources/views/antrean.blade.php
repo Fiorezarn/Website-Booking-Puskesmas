@@ -58,20 +58,44 @@
     </section>
     <section id="appointment">
       <div class="container">
-        <h2 id="appointment-category">Antrean Poli Umum</h2>
+        <h2 id="appointment-category">Antrean Sekarang</h2>
         <div class="row mb-0 mb-lg-4">
-            @foreach ($pasien as $pasien)
-              <div class="appointment-item">
-                <div class="appointment-number">
-                  <h3>Nomor Antrian:</h3>
-                  <p>{{ $pasien->id }}</p>
-                </div>
-                <div class="appointment-status">
-                  <h3>Status:</h3>
-                  <p>{{ $pasien->status }}</p>
-                </div>
+        @foreach ($antreanPoliUmum as $antrian)
+            <div class="appointment-item" data-category="Poli Umum">
+              <div class="appointment-number">
+                <h3>Nomor Antrian:</h3>
+                <p>{{ $antrian->id }}</p>
               </div>
-            @endforeach
+              <div class="appointment-status">
+                <h3>Status:</h3>
+                <p>{{ $antrian->status }}</p>
+              </div>
+            </div>
+          @endforeach
+          @foreach ($antreanPoliGigi as $antrian)
+            <div class="appointment-item" data-category="Poli Gigi">
+              <div class="appointment-number">
+                <h3>Nomor Antrian:</h3>
+                <p>{{ $antrian->id }}</p>
+              </div>
+              <div class="appointment-status">
+                <h3>Status:</h3>
+                <p>{{ $antrian->status }}</p>
+              </div>
+            </div>
+          @endforeach
+          @foreach ($antreanPoliTHT as $antrian)
+            <div class="appointment-item" data-category="Poli THT">
+              <div class="appointment-number">
+                <h3>Nomor Antrian:</h3>
+                <p>{{ $antrian->id }}</p>
+              </div>
+              <div class="appointment-status">
+                <h3>Status:</h3>
+                <p>{{ $antrian->status }}</p>
+              </div>
+            </div>
+          @endforeach
         </div>
       </div>
     </section>

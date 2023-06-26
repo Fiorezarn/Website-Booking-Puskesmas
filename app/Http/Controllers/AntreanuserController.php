@@ -30,6 +30,9 @@ class AntreanuserController extends Controller
         $userId = auth()->user()->id;
         $data = [
             'pasien' => $this->Antrean->where('user_id',  $userId)->get(),
+            'antreanPoliUmum' => $this->Antrean->where('kategori', 'Poli Umum')->get(),
+            'antreanPoliGigi' => $this->Antrean->where('kategori', 'Poli Gigi')->get(),
+            'antreanPoliTHT' => $this->Antrean->where('kategori', 'Poli THT')->get(),
         ];
         // dd($data);
         return view('antrean', $data);

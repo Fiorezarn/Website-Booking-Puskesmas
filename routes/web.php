@@ -42,8 +42,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/politht', [AdminController::class, 'politht']);
 });
 
-Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuserall');
-Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuser');
+// Route::get('#appointment', [AntreanuserController::class, 'userantreanall'])->name('antreanuserall');
+Route::get('/antrean', [AntreanuserController::class, 'userantrean'])->name('antreanuser');
 Route::get('/ambilantrean', [AntreanuserController::class, 'showForm'])->name('ambilantrean.form');
 Route::post('/ambilantrean', [AntreanuserController::class, 'store'])->name('ambilantrean.store');
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact.show');
