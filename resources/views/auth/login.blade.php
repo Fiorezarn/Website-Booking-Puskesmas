@@ -6,8 +6,8 @@
 @section('content')
         <div class="wrapper">
             <div class="title-text">
-                <div class="title login">Form Login</div>
-                <div class="title signup">Form Registrasi</div>
+                <div class="title login">Login</div>
+                <div class="title signup">Registrasi</div>
             </div>
             <div class="form-container">
                 <div class="slide-controls">
@@ -25,10 +25,9 @@
                     </pre>
                     <div class="field">
                         <input id="email" type="email" placeholder="Masukan Email Anda" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                         @error('email')
                         <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                            <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>

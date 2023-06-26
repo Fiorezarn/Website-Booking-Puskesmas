@@ -85,6 +85,16 @@
               </li>
             </ul>
           </li>
+
+          
+          <li class="nav-item">
+                <a href="/laporan-user" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Laporan
+                  </p>
+                </a>
+              </li>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

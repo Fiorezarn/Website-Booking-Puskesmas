@@ -7,6 +7,7 @@ use App\Http\Middleware\Admin;
 use App\Http\Middleware\RedirectIfNotAdmin;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AntreanuserController;
+use App\Http\Controllers\LaporanController;
 
 
 /*
@@ -42,12 +43,16 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/politht', [AdminController::class, 'politht']);
 });
 
-// Route::get('#appointment', [AntreanuserController::class, 'userantreanall'])->name('antreanuserall');
+// Route::get('/antrean', [AntreanuserController::class, 'userantreanall'])->name('antreanuserall');
 Route::get('/antrean', [AntreanuserController::class, 'userantrean'])->name('antreanuser');
 Route::get('/ambilantrean', [AntreanuserController::class, 'showForm'])->name('ambilantrean.form');
 Route::post('/ambilantrean', [AntreanuserController::class, 'store'])->name('ambilantrean.store');
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact.show');
 Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.send');
+
+Route::get('/laporan', [LaporanController::class, 'generatePDF'])->name('laporan.pdf');
+Route::get('/laporan-user', [LaporanController::class, 'laporan'])->name('showLaporan');
+
 
 // // Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
 // // >>>>>>> main
@@ -58,6 +63,9 @@ Route::post('/contact', [ContactController::class, 'sendEmail'])->name('contact.
 
 Route::post('/insert',[AntreanController::class,'insert']);
 Route::patch('update/{id}', [AntreanController::class, 'update'])->name('update');
+
+// Route::get('/laporan', 'LaporanController@generatePDF');
+
 // Route::patch('/antrean/{antrean}', [AntreanController::class, 'update'])->name('antrean.update');
 // Route::patch('update/{id}', 'AntreanController@update')->name('update');
 // Route::resource('update', AntreanController::class)->only(["update"])->names('update');

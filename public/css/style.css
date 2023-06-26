@@ -180,6 +180,9 @@
   .section-title{
     text-align: center;
   }
+  .container{
+    padding: 20px;
+  }
   
   .contact .info i {
     font-size: 20px;

@@ -1,22 +1,15 @@
 @extends('layouts.main')
 @section('css', '/css/antrean.css')
 @section('content')
-  <header class="header-antrean">
-    <h1>Antrean Puskesmas</h1>
-  </header>
   <main>
-
-       @auth
-        <!-- Button Modal -->
-          <a href="/ambilantrean" class="btn btn-primary my-3 login-ambil">
-             <i class="bi bi-file-plus me-1"></i>Ambil Antrian
-          </a>
-        @else
-          <a href="/login" type="button" class="btn btn-primary my-3 login-ambil">
-            <i class="bi bi-file-plus me-1"></i>Ambil Antrian
-          </a>
-        @endauth
-
+    <section id="hero" class="d-flex align-items-center">
+          <div class="container">
+            <h1>Silahkan Ambil Antrian Anda</h1>
+                  <div class="buttonantrian">
+                    <a href="/ambilantrean" class="btn btn-primary lihat-antrean">Ambil Antrean Anda</a>
+                  </div>
+          </div>
+        </section>
 
   @if(auth()->check())
     <section id="queue">
@@ -65,6 +58,7 @@
     <section id="appointment">
       <div class="container">
         <h2 id="appointment-category">Antrean Sekarang</h2>
+        <input type="text" class="form-control mr-sm-4" id="search-input" onkeyup="searchByName()" placeholder="Cari berdasarkan nama...">
         <div class="row mb-0 mb-lg-4">
         @foreach ($antreanPoliUmum as $antrian)
             <div class="appointment-item" data-category="Poli Umum">
@@ -118,27 +112,42 @@
       </div>
     </section>
   </main>
-
-<script>
+  <script>
     function showQueue(category) {
-  const appointmentSection = document.getElementById("appointment");
-  const appointmentCategory = document.getElementById("appointment-category");
+      const appointmentSection = document.getElementById("appointment");
+      const appointmentCategory = document.getElementById("appointment-category");
   
-  // Mengganti judul antrean sesuai dengan kategori yang dipilih
-  appointmentCategory.textContent = "Antrean " + category;
+      // Mengganti judul antrean sesuai dengan kategori yang dipilih
+      appointmentCategory.textContent = "Antrean " + category;
 
-  // Menampilkan atau menyembunyikan antrean berdasarkan kategori yang dipilih
-  const appointmentItems = appointmentSection.getElementsByClassName("appointment-item");
-  for (let i = 0; i < appointmentItems.length; i++) {
-    const appointmentItem = appointmentItems[i];
-    const itemCategory = appointmentItem.getAttribute("data-category");
+      // Menampilkan atau menyembunyikan antrean berdasarkan kategori yang dipilih
+      const appointmentItems = appointmentSection.getElementsByClassName("appointment-item");
+      for (let i = 0; i < appointmentItems.length; i++) {
+        const appointmentItem = appointmentItems[i];
+        const itemCategory = appointmentItem.getAttribute("data-category");
 
-    if (itemCategory === category) {
-      appointmentItem.style.display = "block";
-    } else {
-      appointmentItem.style.display = "none";
+        if (itemCategory === category) {
+          appointmentItem.style.display = "block";
+        } else {
+          appointmentItem.style.display = "none";
+        }
+      }
     }
-  }
-}
+  
+    function searchByName() {
+      const searchInput = document.getElementById("search-input").value.toLowerCase();
+      const appointmentItems = document.getElementsByClassName("appointment-item");
+
+      for (let i = 0; i < appointmentItems.length; i++) {
+        const appointmentItem = appointmentItems[i];
+        const itemName = appointmentItem.querySelector("p").textContent.toLowerCase();
+
+        if (itemName.includes(searchInput)) {
+          appointmentItem.style.display = "block";
+        } else {
+          appointmentItem.style.display = "none";
+        }
+      }
+    }
 </script>
 @endsection

@@ -2,9 +2,7 @@
 @extends('layouts.main')
 @section('css', '/css/ambilantrean.css')
 @section('content')
-  <header>
-    <h1>Ambil Antrean</h1>
-  </header>
+
   <main>
     <section id="ambil-antrean">
       <div class="container">
@@ -14,10 +12,16 @@
           <div class="form-group">
             <label for="namapasien">Nama Pasien:</label>
             <input type="text" id="namapasien" name="namapasien" required>
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="usia">Usia:</label>
             <input type="number" id="usia" name="usia" required>
+            @error('usia')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="jeniskelamin">Jenis Kelamin:</label>
@@ -37,14 +41,23 @@
           <div class="form-group">
             <label for="nik">NIK:</label>
             <input type="text" id="nik" name="nik" required>
+            @error('nik')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="nohp">No. HP:</label>
             <input type="text" id="nohp" name="nohp" required>
+            @error('nohp')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="alamat">Alamat:</label>
             <textarea id="alamat" name="alamat" required></textarea>
+            @error('alamat')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <button type="submit" class="btn-submit">Ambil Antrean</button>

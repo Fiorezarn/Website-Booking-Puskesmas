@@ -9,9 +9,16 @@
             <h1>Selamat Datang</h1>
             <h2>Ini Adalah Website Resmi Puskesmas Sehat</h2>
             <!-- ======= Button Lihat antrian ======= -->
-              <div class="buttonantrian">
-                <a href="/antrean" class="btn btn-primary lihat-antrean">Lihat Antrean</a>
-              </div>
+                  
+               @auth
+                  <div class="buttonantrian">
+                    <a href="/antrean" class="btn btn-primary lihat-antrean">Lihat Antrean</a>
+                  </div>
+                @else
+                  <div class="buttonantrian">
+                    <a href="{{ route('login') }}" class="btn btn-primary lihat-antrean">Lihat Antrean</a>
+                  </div>
+                @endauth
           </div>
         </section>
       <!-- End Hero -->
@@ -144,9 +151,7 @@
                     </form>
 
                   </div>
-
                 </div>
-
               </div>
             </section>
         <!-- End Contact Section -->

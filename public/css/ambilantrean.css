@@ -6,6 +6,10 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  #ambil-antrean{
+    margin-top: 50px;
+  }
   
   .container {
     max-width: 800px;
@@ -57,7 +61,7 @@ body {
   .btn-submit:hover {
     background-color: #45a049;
   }
-  
+
   /* Responsif */
   @media screen and (max-width: 600px) {
     .container {

@@ -71,6 +71,6 @@ class AntreanuserController extends Controller
         $Data['user_id'] = auth()->user()->id; 
         $this->Antrean->addData($data);
     
-        return redirect()->back()->with('success', 'Antrean berhasil diambil!');
+        return redirect('/antrean');
     }
 }
