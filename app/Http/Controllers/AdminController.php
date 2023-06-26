@@ -16,10 +16,13 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $totalUser = User::count();
+        $totalantrean = Antrean::count();
         
         $data = [
-            'totalUser' => $totalUser,
+            'totalantrean' => $totalantrean,
+            'pasienumum'=> $this->Antrean->where('kategori', 'Poli Umum')->count(),
+            'pasiengigi'=> $this->Antrean->where('kategori', 'Poli Gigi')->count(),
+            'pasientht'=> $this->Antrean->where('kategori', 'Poli THT')->count(),
         ];
         
         return view('admin.dashboard', $data);

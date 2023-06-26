@@ -31,61 +31,62 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>14</h3>
-                                <p>New Orders</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box {{ $totalantrean > 0 ? 'bg-warning' : 'bg-secondary' }}">
+                    <div class="inner">
+                        <h3>{{ $totalantrean }}</h3>
+                        <p>Total Antrean</p>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>14</h3>
-                                <p>Total Product</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-cube"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                    <div class="icon">
+                        <i class="{{ $totalantrean > 0 ? 'ion ion-person-stalker' : 'ion ion-person' }}"></i>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{ $totalUser }}</h3>
-                                <p>User Registrations</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-stalker"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                    <a href="/antrean" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box {{ $pasienumum > 0 ? 'bg-info' : 'bg-secondary' }}">
+                    <div class="inner">
+                        <h3>{{ $pasienumum }}</h3>
+                        <p>Poli Umum</p>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>150</h3>
-                                <p>Role Admin</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
+                    <div class="icon">
+                    <i class="{{ $pasienumum > 0 ? 'ion ion-person' : 'ion ion-person' }}"></i>
                     </div>
+                    <a href="/poliumum" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box {{ $pasiengigi > 0 ? 'bg-success' : 'bg-secondary' }}">
+                    <div class="inner">
+                        <h3>{{ $pasiengigi }}</h3>
+                        <p>Poli Gigi</p>
+                    </div>
+                    <div class="icon">
+                    <i class="{{ $pasiengigi > 0 ? 'ion ion-person' : 'ion ion-person' }}"></i>
+                    </div>
+                    <a href="/poligigi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box {{ $pasientht > 0 ? 'bg-danger' : 'bg-secondary' }}">
+                    <div class="inner">
+                        <h3>{{ $pasientht }}</h3>
+                        <p>Pasien THT</p>
+                    </div>
+                    <div class="icon">
+                        <i class="{{ $pasientht > 0 ? 'ion ion-person' : 'ion ion-person' }}"></i>
+                    </div>
+                    <a href="/politht" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
                     <!-- ./col -->
                 </div>
             </div>
