@@ -91,19 +91,19 @@
                   <div class="col-lg-4">
                     <div class="info">
                       <div class="address">
-                        <i class="bi bi-geo-alt"></i>
+                      <i class="fa-solid fa-location-dot"></i>
                         <h4>Lokasi:</h4>
                         <p>Bonang</p>
                       </div>
 
                       <div class="email">
-                        <i class="bi bi-envelope"></i>
+                      <i class="fa-regular fa-envelope"></i>
                         <h4>Email:</h4>
                         <p>Lutfi@gmail.com</p>
                       </div>
 
                       <div class="phone">
-                        <i class="bi bi-phone"></i>
+                      <i class="fa-solid fa-phone-volume"></i>
                         <h4>Call:</h4>
                         <p>085244456154</p>
                       </div>
