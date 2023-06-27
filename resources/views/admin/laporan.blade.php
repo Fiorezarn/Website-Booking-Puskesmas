@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include('admin.head')
 
 <body class="hold-transition sidebar-mini">
@@ -22,7 +21,7 @@
           </div><!-- /.col -->
 
           <div class="container">
-            <div class="category">
+            <div class="category-download">
               <div class="dropdown">
                 <button class="btn btn-category dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Pilih Kategori
@@ -38,7 +37,7 @@
           </div>
           
           <div class="container">
-            <div class="category">
+            <div class="category-download">
               <div class="dropdown">
                 <button class="btn btn-category dropdown-toggle" type="button" id="downloadDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Download

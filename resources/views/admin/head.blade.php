@@ -24,4 +24,5 @@
       <link rel="stylesheet" href="{{ asset ('AdminLTE/plugins') }}//daterangepicker/daterangepicker.css">
       <!-- summernote -->
       <link rel="stylesheet" href="{{ asset ('AdminLTE/plugins') }}//summernote/summernote-bs4.min.css">
+     <link rel="stylesheet" href="{{ asset('css/laporan.css') }}">
   </head>
