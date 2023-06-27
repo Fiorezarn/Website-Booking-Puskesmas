@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h2>Laporan 7 Hari Terakhir</h2>
+    <h2>Laporan Puskesmas Sehat {{ $startDate }} - {{ $endDate }}</h2>
     <table>
         <thead>
             <tr>

@@ -6,6 +6,8 @@ use App\Models\Antrean;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
+use Carbon\Carbon;
+
 
 class LaporanController extends Controller
 {
@@ -26,8 +28,11 @@ class LaporanController extends Controller
             $query->where('kategori', $category);
         }
 
+        $startDate = Carbon::now()->subDays(6)->format('Y-m-d');
+        $endDate = Carbon::now()->format('Y-m-d');
+
         $pasien = $query->take(7)->get();
-        $pdf = PDF::loadView('outputlaporan', compact('pasien'));
+        $pdf = PDF::loadView('outputlaporan', compact('pasien','startDate', 'endDate'));
         return $pdf->download('laporan.pdf');
     }
     
